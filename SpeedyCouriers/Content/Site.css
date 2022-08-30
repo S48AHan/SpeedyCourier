@@ -1,0 +1,125 @@
+﻿body {
+    padding-top: 0px;
+    padding-bottom: 20px;
+
+    
+}
+
+/* Set padding to keep content from hitting the edges */
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    min-width: 280px;
+}
+
+
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+    background-color: #777;
+    border-color: #fff
+}
+
+nav {
+    width: 100%;
+    background-color: #ADD8E6;
+    padding: 3%;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+    font-weight: 800;
+    color: #000;
+    font-size: 30px;
+}
+
+
+    .navbar-brand:hover {
+        color: firebrick;
+        transition: all 0.3s ease-in;
+        transform: scale(1.05, 1.05);
+    }
+
+        
+.nav-item {
+    margin: 0px 15px;
+}
+
+.navbar-nav .nav-item a {
+    text-decoration: none;
+    color: #000;
+    font-size: 15px;
+}
+
+.nav-item:hover a {
+    color: firebrick;
+    transition: all 0.2s linear;
+}
+.button1{
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+    font-size: 20px;
+    padding: 10px 24px;
+    border-radius: 12px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.button1:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+.button2 {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+    font-size: 20px;
+    padding: 10px 24px;
+    border-radius: 12px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.button2:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.custom-toggler.navbar-toggler {
+    border-color: #7a7878;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg%27%3E%3Cpath stroke='rgba(122, 120, 120, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+@media screen and (max-width: 991px) {
+    nav {
+        padding: 10px;
+    }
+
+    .nav-item {
+        margin-top: 8px;
+    }
+}
+
+
+
+/*Carousel*/
+.carousel {
+width: 100%;
+}
+

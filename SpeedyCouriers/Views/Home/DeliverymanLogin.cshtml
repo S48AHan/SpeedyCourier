@@ -1,0 +1,147 @@
+﻿@model SpeedyCouriers.Models.DeliveryMan
+@{
+    Layout = null;
+    if (Session["delmanID"] != null)
+    {
+        Response.Redirect("~/Deliveryman/LoggedInDeliveryMan");
+    }
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LogIn</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: powderblue;
+            overflow: hidden;
+        }
+
+        #login-div {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 500px;
+            transform: translate(-50%,-50%);
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+            border-radius: 15px;
+            background: white;
+        }
+
+        .field-validation-error {
+            color: red;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: -50px;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            height: 40px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            outline: none;
+            font-size: 18px;
+            padding: 12px 20px;
+            margin-left: 100px;
+            margin-top: 10px;
+        }
+
+        input[type=reset] {
+            width: 100%;
+            height: 40px;
+            background-color: darkslateblue;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            outline: none;
+            font-size: 18px;
+            padding: 12px 20px;
+            margin-left: 100px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .inputclass {
+            width: 200px;
+            height: 40px;
+            font-size: 20px;
+        }
+
+        input[type=submit]:hover {
+            background-color: #6CC417;
+        }
+
+        input[type=reset]:hover {
+            background-color: #4863A0;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-div">
+        <img class="img-fluid" src="~/Images/delivery.png" alt="Delivery" width="500" height="350">
+        <h1>Log In</h1>
+
+        @using (Html.BeginForm("AutherizeDel", "Home", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td>
+                        <h2> @Html.LabelFor(model => model.delmanEmail)</h2>
+
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.delmanEmail, new { @class = "inputclass" })
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.delmanEmail)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2>@Html.LabelFor(model => model.delmanPass)</h2>
+                    </td>
+
+                    <td>
+                        @Html.EditorFor(model => model.delmanPass, new { htmlAttributes = new { @class = "inputclass" } })
+                    </td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>@Html.ValidationMessageFor(model => model.delmanPass)</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                    </td>
+                </tr>
+                <tr>
+
+                    <td>
+                        <input type="submit" name="name" value="Login">
+                        <input type="reset" name="name" value="Clear Form">
+                    </td>
+                </tr>
+
+            </table>
+        }
+    </div>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

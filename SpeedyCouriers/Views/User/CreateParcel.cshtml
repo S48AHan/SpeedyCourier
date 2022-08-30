@@ -1,0 +1,136 @@
+﻿
+@{
+    ViewBag.Title = "CreateParcel";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<h2>CreateParcel</h2>
+
+<head>
+    <style>
+        
+        h3 {
+            background: #728FCE;
+            color: white;
+            padding: 10px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=datetime-local] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            input[type=submit]:hover {
+                background-color: #45a049;
+            }
+
+        .input {
+            width: 100%;
+            /*margin:0px auto;*/
+        }
+    </style>
+</head>
+
+<body class="mt-5">
+
+
+
+    <form action="/User/CreateParcel" method="post">
+
+        <h3> Reciever Information</h3>
+
+        <label for="sname"><h4>Reciever Name</h4></label>
+        <div class="input">
+            <input type="text" id="rname" name="receiverName" >
+            @Html.ValidationMessage("receivername", "", new { @class = "text-danger" })
+        </div>
+        <label for="rphone"><h4> Phone</h4></label>
+
+        <div class="input">
+            <input type="text" id="rphone" name="phoneNumber">
+            @Html.ValidationMessage("phoneNumber", "", new { @class = "text-danger" })
+        </div>
+        <label for="raddress"><h4>Address</h4></label>
+        <div class="input">
+            <input type="text" id="raddress" name="receiverAddress">
+            @Html.ValidationMessage("receiverAddress", "", new { @class = "text-danger" })
+        </div>
+
+        <h3> Delivery Information</h3>
+
+        <label for="pcategory"><h4>Product Category</h4></label>
+        <div class="input">
+            <select id="category" name="productType">
+                <option style="display:none"></option>
+                <option value="cloth">Cloth</option>
+                <option value="edevice">Electronic Device</option>
+                <option value="furniture">Furniture</option>
+                <option value="shoe">Shoe</option>
+                <option value="book">Book</option>
+            </select>
+            @Html.ValidationMessage("productType", "", new { @class = "text-danger" })
+        </div>
+
+
+        <label for="pdate"><h4>Pickup Date</h4></label>
+        <div class="input">
+            @Html.TextBox("MockDateCreated", DateTime.Now.ToString("yyyy-MM-dd"), new { @disabled = "disabled" })
+            @Html.Hidden("DateCreated", DateTime.Now.ToString("yyyy-MM-dd"))
+
+        </div>
+        <label for="pcash"><h4>Cash</h4></label>
+
+        <div class="input">
+            <input type="text" id="pcash" name="productPrice">
+            @Html.ValidationMessage("productPrice", "", new { @class = "text-danger" })
+        </div>
+        <div class="input">
+
+            <input type="submit" value="Submit">
+        </div>
+
+
+    </form>
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+        </script>
+
+    }
+
+</body>
+

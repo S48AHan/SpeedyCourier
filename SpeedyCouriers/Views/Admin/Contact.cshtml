@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Admin/AdminLayout.cshtml";
+
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Home/Index");
+    }
+}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" />
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            font-size: 20px;
+            box-sizing: border-box;
+            padding: 0;
+        }
+
+        .card {
+            width: 100%;
+            padding: 0 20px;
+            margin: 10px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 300px;
+            background-color: cornflowerblue;
+            font-size: 30px;
+            margin-top: 70px;
+        }
+
+        .main {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-icon {
+            background: white;
+            text-align: center;
+            height: 60px;
+            width: 60px;
+            line-height: 60px !important;
+            border-radius: 50%;
+        }
+
+        p {
+            margin-top: 20px;
+        }
+
+        .about h1 {
+            margin-top: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="about">
+        <h1> Contact US </h1>
+        <div class="main">
+            <div class="card">
+                <i class="card-icon far fa-envelope"></i>
+                <p>speedycouriers@gmail.com</p>
+            </div>
+            <div class="card">
+                <i class="card-icon fas fa-phone"></i>
+                <p>+88014789632541</p>
+            </div>
+            <div class="card">
+                <i class="card-icon fa-solid fa-location-dot"></i>
+                <p>Dhaka, Bangladesh</p>
+            </div>
+        </div>
+    </section>
+</body>

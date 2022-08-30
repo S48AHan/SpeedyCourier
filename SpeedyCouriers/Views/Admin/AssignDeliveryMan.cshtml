@@ -1,0 +1,110 @@
+﻿@model List<SpeedyCouriers.Models.DeliveryMan>
+
+@{
+    ViewBag.Title = "AssignDeliveryMan";
+    Layout = "~/Views/Admin/AdminLayout.cshtml";
+}
+
+<h2>AssignDeliveryMan</h2>
+<head>
+
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+
+</head>
+
+
+<div>
+
+    <form action="/Admin/AssignDeliveryman/">
+        <label for="DeliveryManStatus" required>Delivery Man Status</label>
+        <div>
+            <select id="category" name="delManstatus">
+                <option style="display:none"></option>
+                <option value="Available">Available</option>
+                <option value="Busy">Busy</option>
+            </select>
+            @Html.ValidationMessage("productType", "", new { @class = "text-danger" })
+        </div>
+        <button class="btn btn-success" style="margin-top:5px">Submit</button>
+    </form>
+
+
+
+    <table class="table table-hover" style="margin-top:100px">
+        <thead>
+            <tr>
+                <th scope="col">Delivery Man ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Address</th>
+                <th scope="col">Status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var delMan in Model)
+            {
+
+                <tr class="table-dark">
+
+                    <td>
+                        @delMan.delmanID
+                    </td>
+
+                    <td>
+                        @delMan.delmanName
+                    </td>
+                    <td>
+                        @delMan.delmanEmail
+                    </td>
+                    <td>
+                        @delMan.delmanPass
+                    </td>
+                    <td>
+                        @delMan.delmanPhone
+                    </td>
+                    <td>
+                        @delMan.delmanAddress
+                    </td>
+                    <td>
+                        @delMan.delmanStatus
+                    </td>
+                    <td>
+                        <button type="button" onclick='selectedDeliveryman("@delMan.delmanID")'>Done</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+
+}
+
+<script>
+    function selectedDeliveryman(delmanID) {
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("deliveryMan", "Admin")',
+            data: {
+                orderID: localStorage.getItem("orderID"), delmanID:delmanID
+            },
+            success: function (data) {
+                alert("Data Inserted");
+            }
+        })
+    }
+
+</script>
+
+

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SpeedyCouriers.Models.DeliveryMan>
+
+@{
+    Layout = "~/Views/Admin/AdminLayout.cshtml";
+}
+
+<head>
+    <title>
+        Delivery Man Info
+    </title>
+
+</head>
+<body>
+
+    <table class="table table-hover" style="margin-top:100px">
+        <thead>
+            <tr>
+                <th scope="col">Delivery Man ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Address</th>
+                <th scope="col">Status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var delMan in Model)
+            {
+
+                <tr class="table-dark">
+
+                    <td>
+                        @delMan.delmanID
+                    </td>
+
+                    <td>
+                        @delMan.delmanName
+                    </td>
+                    <td>
+                        @delMan.delmanEmail
+                    </td>
+                    <td>
+                        @delMan.delmanPass
+                    </td>
+                    <td>
+                        @delMan.delmanPhone
+                    </td>
+                    <td>
+                        @delMan.delmanAddress
+                    </td>
+                    <td>
+                        @delMan.delmanStatus
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+</body>

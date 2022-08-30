@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SpeedyCouriersModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DeliveryInfo">
+    <Key>
+      <PropertyRef Name="DeliveryID" />
+    </Key>
+    <Property Name="DeliveryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PayStatus" Type="varchar" MaxLength="15" />
+    <Property Name="DeliveryStatus" Type="varchar" MaxLength="15" />
+    <Property Name="DeltranID" Type="int" />
+  </EntityType>
+  <EntityType Name="DeliveryMan">
+    <Key>
+      <PropertyRef Name="delmanID" />
+    </Key>
+    <Property Name="delmanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="delmanName" Type="varchar" MaxLength="20" />
+    <Property Name="delmanEmail" Type="varchar" MaxLength="30" />
+    <Property Name="delmanPass" Type="varchar" MaxLength="30" />
+    <Property Name="delmanPhone" Type="varchar" MaxLength="11" />
+    <Property Name="delmanAddress" Type="varchar" MaxLength="40" />
+    <Property Name="delmanStatus" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="OrderInfo">
+    <Key>
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="orderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Order_userID" Type="int" />
+    <Property Name="Order_receiverID" Type="int" />
+    <Property Name="totalCost" Type="int" />
+    <Property Name="orderStatus" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="receiverInfo">
+    <Key>
+      <PropertyRef Name="receiverID" />
+    </Key>
+    <Property Name="receiverID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="receiverName" Type="varchar" MaxLength="25" />
+    <Property Name="receiverAddress" Type="varchar" MaxLength="40" />
+    <Property Name="receiveDate" Type="date" />
+    <Property Name="productType" Type="varchar" MaxLength="30" />
+    <Property Name="productPrice" Type="int" />
+    <Property Name="phoneNumber" Type="varchar" MaxLength="11" />
+  </EntityType>
+  <EntityType Name="TransactionInfo">
+    <Key>
+      <PropertyRef Name="transactionID" />
+    </Key>
+    <Property Name="transactionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tranOrderID" Type="int" />
+    <Property Name="tranUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="userInformation">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="20" />
+    <Property Name="Userpassword" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="25" />
+    <Property Name="UserRole" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__DeliveryI__Deltr__2DE6D218">
+    <End Role="TransactionInfo" Type="Self.TransactionInfo" Multiplicity="0..1" />
+    <End Role="DeliveryInfo" Type="Self.DeliveryInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionInfo">
+        <PropertyRef Name="transactionID" />
+      </Principal>
+      <Dependent Role="DeliveryInfo">
+        <PropertyRef Name="DeltranID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderInfo__Order__2180FB33">
+    <End Role="userInformation" Type="Self.userInformation" Multiplicity="0..1" />
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="userInformation">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="OrderInfo">
+        <PropertyRef Name="Order_userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderInfo__Order__22751F6C">
+    <End Role="receiverInfo" Type="Self.receiverInfo" Multiplicity="0..1" />
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="receiverInfo">
+        <PropertyRef Name="receiverID" />
+      </Principal>
+      <Dependent Role="OrderInfo">
+        <PropertyRef Name="Order_receiverID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tranO__282DF8C2">
+    <End Role="OrderInfo" Type="Self.OrderInfo" Multiplicity="0..1" />
+    <End Role="TransactionInfo" Type="Self.TransactionInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderInfo">
+        <PropertyRef Name="orderID" />
+      </Principal>
+      <Dependent Role="TransactionInfo">
+        <PropertyRef Name="tranOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transacti__tranU__29221CFB">
+    <End Role="DeliveryMan" Type="Self.DeliveryMan" Multiplicity="0..1" />
+    <End Role="TransactionInfo" Type="Self.TransactionInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeliveryMan">
+        <PropertyRef Name="delmanID" />
+      </Principal>
+      <Dependent Role="TransactionInfo">
+        <PropertyRef Name="tranUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SpeedyCouriersModelStoreContainer">
+    <EntitySet Name="DeliveryInfo" EntityType="Self.DeliveryInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DeliveryMan" EntityType="Self.DeliveryMan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderInfo" EntityType="Self.OrderInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="receiverInfo" EntityType="Self.receiverInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionInfo" EntityType="Self.TransactionInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="userInformation" EntityType="Self.userInformation" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__DeliveryI__Deltr__2DE6D218" Association="Self.FK__DeliveryI__Deltr__2DE6D218">
+      <End Role="TransactionInfo" EntitySet="TransactionInfo" />
+      <End Role="DeliveryInfo" EntitySet="DeliveryInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderInfo__Order__2180FB33" Association="Self.FK__OrderInfo__Order__2180FB33">
+      <End Role="userInformation" EntitySet="userInformation" />
+      <End Role="OrderInfo" EntitySet="OrderInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderInfo__Order__22751F6C" Association="Self.FK__OrderInfo__Order__22751F6C">
+      <End Role="receiverInfo" EntitySet="receiverInfo" />
+      <End Role="OrderInfo" EntitySet="OrderInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tranO__282DF8C2" Association="Self.FK__Transacti__tranO__282DF8C2">
+      <End Role="OrderInfo" EntitySet="OrderInfo" />
+      <End Role="TransactionInfo" EntitySet="TransactionInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transacti__tranU__29221CFB" Association="Self.FK__Transacti__tranU__29221CFB">
+      <End Role="DeliveryMan" EntitySet="DeliveryMan" />
+      <End Role="TransactionInfo" EntitySet="TransactionInfo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

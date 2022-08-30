@@ -1,0 +1,72 @@
+﻿@model List<SpeedyCouriers.Models.OrderInfo>
+
+@{
+    ViewBag.Title = "OrderDetails";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<h2>OrderDetails</h2>
+<head>
+    <style>
+        .form-control {
+            margin-bottom: 50px;
+        }
+
+        .btn {
+            margin-bottom: 40px;
+        }
+
+        .form {
+            margin-top: 50px;
+        }
+
+        #category {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<form action="/User/OrderDetails" class="form">
+    <label for="OrderStatus" required>Order Details</label>
+    <div>
+        <select id="category" name="searchStatus">
+            <option style="display:none"></option>
+            <option value="Processing">Processing</option>
+            <option value="Not Done">Not Done</option>
+            <option value="Delivered">Delivered</option>
+        </select>
+    </div>
+    <button class="btn btn-success" style="margin-top:5px">Submit</button>
+</form>
+
+
+
+<table class="table table-hover ">
+    <thead>
+        <tr>
+            <th scope="col">Order ID</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Reciever Name</th>
+            <th scope="col">Reciever Address</th>
+            <th scope="col">Reciever Phone Number</th>
+            <th scope="col">Total Cost</th>
+            <th scope="col">Status</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+
+    @foreach (var orderlist in Model)
+    {
+        <tr>
+            <td>@orderlist.orderID</td>
+            <td>@orderlist.userInformation.Name</td>
+            <td>@orderlist.receiverInfo.receiverName</td>
+            <td>@orderlist.receiverInfo.receiverAddress</td>
+            <td>@orderlist.receiverInfo.phoneNumber</td>
+            <td>@orderlist.totalCost</td>
+            <td>@orderlist.orderStatus</td>
+        </tr>
+    }
+</table>

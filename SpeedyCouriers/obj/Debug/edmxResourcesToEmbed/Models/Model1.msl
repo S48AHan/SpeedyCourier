@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SpeedyCouriersModelStoreContainer" CdmEntityContainer="SpeedyCouriersEntities">
+    <EntitySetMapping Name="DeliveryInfoes">
+      <EntityTypeMapping TypeName="SpeedyCouriersModel.DeliveryInfo">
+        <MappingFragment StoreEntitySet="DeliveryInfo">
+          <ScalarProperty Name="DeliveryID" ColumnName="DeliveryID" />
+          <ScalarProperty Name="PayStatus" ColumnName="PayStatus" />
+          <ScalarProperty Name="DeliveryStatus" ColumnName="DeliveryStatus" />
+          <ScalarProperty Name="DeltranID" ColumnName="DeltranID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliveryMen">
+      <EntityTypeMapping TypeName="SpeedyCouriersModel.DeliveryMan">
+        <MappingFragment StoreEntitySet="DeliveryMan">
+          <ScalarProperty Name="delmanID" ColumnName="delmanID" />
+          <ScalarProperty Name="delmanName" ColumnName="delmanName" />
+          <ScalarProperty Name="delmanEmail" ColumnName="delmanEmail" />
+          <ScalarProperty Name="delmanPass" ColumnName="delmanPass" />
+          <ScalarProperty Name="delmanPhone" ColumnName="delmanPhone" />
+          <ScalarProperty Name="delmanAddress" ColumnName="delmanAddress" />
+          <ScalarProperty Name="delmanStatus" ColumnName="delmanStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderInfoes">
+      <EntityTypeMapping TypeName="SpeedyCouriersModel.OrderInfo">
+        <MappingFragment StoreEntitySet="OrderInfo">
+          <ScalarProperty Name="orderStatus" ColumnName="orderStatus" />
+          <ScalarProperty Name="orderID" ColumnName="orderID" />
+          <ScalarProperty Name="Order_userID" ColumnName="Order_userID" />
+          <ScalarProperty Name="Order_receiverID" ColumnName="Order_receiverID" />
+          <ScalarProperty Name="totalCost" ColumnName="totalCost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="receiverInfoes">
+      <EntityTypeMapping TypeName="SpeedyCouriersModel.receiverInfo">
+        <MappingFragment StoreEntitySet="receiverInfo">
+          <ScalarProperty Name="receiverID" ColumnName="receiverID" />
+          <ScalarProperty Name="receiverName" ColumnName="receiverName" />
+          <ScalarProperty Name="receiverAddress" ColumnName="receiverAddress" />
+          <ScalarProperty Name="receiveDate" ColumnName="receiveDate" />
+          <ScalarProperty Name="productType" ColumnName="productType" />
+          <ScalarProperty Name="productPrice" ColumnName="productPrice" />
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionInfoes">
+      <EntityTypeMapping TypeName="SpeedyCouriersModel.TransactionInfo">
+        <MappingFragment StoreEntitySet="TransactionInfo">
+          <ScalarProperty Name="transactionID" ColumnName="transactionID" />
+          <ScalarProperty Name="tranOrderID" ColumnName="tranOrderID" />
+          <ScalarProperty Name="tranUserID" ColumnName="tranUserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userInformations">
+      <EntityTypeMapping TypeName="SpeedyCouriersModel.userInformation">
+        <MappingFragment StoreEntitySet="userInformation">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Userpassword" ColumnName="Userpassword" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

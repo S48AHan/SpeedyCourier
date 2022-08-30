@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/DeliverymanLayout.cshtml";
+
+    if (Session["delmanID"] == null)
+    {
+        Response.Redirect("~/Home/Index");
+    }
+
+
+}
+
+
+<html>
+<head>
+    
+    
+</head>
+
+
+<body onload="window.history.forward();">
+    <h2> Index</h2>
+    
+
+    <div class="row mt-5 pt-2">
+        <div class="col-sm-3">
+
+            <h4> ID</h4>
+        </div>
+        <div class="col-sm-9">
+            <h4> @Session["delmanID"] </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <h4>Name</h4>
+        </div>
+        <div class="col-sm-9">
+            <h4> @Session["delmanName"].ToString() </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <h4> Email</h4>
+        </div>
+        <div class="col-sm-9">
+            <h4> @Session["delmanEmail"].ToString() </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <h4> Status</h4>
+        </div>
+        <div class="col-sm-9">
+            <h4> @Session["delmanStatus"].ToString() </h4>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-sm-3">
+            <a class="btn btn-info" style="margin-bottom: 10px" target="" href=""> Edit</a>
+        </div>
+    </div>
+
+
+
+    <div class="d-grid gap-2">
+        <a href="/Home/DelBack" is class="btn btn-lg btn-primary" type="button">Back</a>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+﻿@model IEnumerable<SpeedyCouriers.Models.TransactionInfo>
+@{
+    ViewBag.Title = "Delivery";
+    Layout = "~/Views/Shared/DeliverymanLayout.cshtml";
+}
+
+<h2>Delivery</h2>
+
+<head>
+    <title>
+        Delivery Man Info
+    </title>
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+
+</head>
+<body>
+
+    <table class="table table-hover" style="margin-top:100px">
+        <thead>
+
+            <tr>
+                <th scope="col">OrderID</th>
+                <th scope="col">User Name</th>
+                <th scope="col">User Email</th>
+                <th scope="col">Receiver Name</th>
+                <th scope="col">Receiver Phone</th>
+                <th scope="col">Reveiver Address</th>
+                <th scope="col">Total Cost</th>
+                <th scope="col">Delivery Status</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var delDetails in Model)
+            {
+
+                <tr class="table-dark">
+
+                    <td>
+                        @delDetails.OrderInfo.orderID
+                    </td>
+
+                    <td>
+                        @delDetails.OrderInfo.userInformation.Name
+                    </td>
+                    <td>
+                        @delDetails.OrderInfo.userInformation.Email
+                    </td>
+                    <td>
+                        @delDetails.OrderInfo.receiverInfo.receiverName
+                    </td>
+                    <td>
+                        @delDetails.OrderInfo.receiverInfo.phoneNumber
+                    </td>
+                    <td>
+                        @delDetails.OrderInfo.receiverInfo.receiverAddress
+                    </td>
+                    <td>
+                        @delDetails.OrderInfo.totalCost
+                    </td>
+                    <td>
+                        @delDetails.OrderInfo.orderStatus
+                    </td>
+                    <td>
+                        <button type="button" onclick='selectedDeliveryman("@delDetails.tranUserID")'>Done</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <script>
+        function selectedDeliveryman(tranUserID) {
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("SelectDeliveryMan", "Deliveryman")',
+            data: {
+                tranUserID: tranUserID
+            },
+            success: function (data) {
+                alert("Data Inserted");
+            }
+        })
+    }
+
+    </script>
+
+
+</body>

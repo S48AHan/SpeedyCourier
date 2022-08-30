@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>CreateUser</h2>
+
+
+<form action="/Home/Register" method="post">
+
+    <div class="form-group mt-4">
+        <label for="">Name</label>
+        <input type="text" class="form-control" id="txtName" placeholder="Enter Name" name="Name" required>
+        @Html.ValidationMessage("Name", "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group mt-4">
+        <label for="">Password</label>
+        <input type="password" class="form-control" id="txtPassword" placeholder="Enter Password" name="Userpassword" required>
+        @Html.ValidationMessage("UserPassword", "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group mt-4">
+        <label for="">Email</label>
+        <input type="email" class="form-control" id="txtEmail" placeholder="Enter Email" name="Email" required>
+        @Html.ValidationMessage("Email", "", new { @class = "text-danger" })
+    </div>
+   
+
+    <div class="mt-4">
+        <label for="">Roles</label>
+        <select id="category" name="UserRole">
+            <option style="display:none"></option>
+            <option value="User">User</option>
+        </select>
+        @Html.ValidationMessage("UserRole", "", new { @class = "text-danger" })
+    </div>
+
+    <!--
+    <div class="text-danger">
+        @Html.ValidationSummary()
+    </div>
+    -->
+    <button class="btn btn-success mt-4">Submit</button>
+</form>

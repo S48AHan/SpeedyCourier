@@ -1,0 +1,166 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Home/Index");
+    }
+}
+
+
+<h2> Index</h2>
+
+
+<head>
+    <style>
+        body {
+            margin-top: 20px;
+            background-color: lightblue;
+        }
+
+        .main {
+            padding: 2px;
+        }
+
+        .topbar {
+            background-color: teal;
+            overflow: hidden;
+        }
+
+            .topbar a {
+                float: right;
+                color: black;
+                background-color: white;
+            }
+
+
+        .btnEdit {
+            background: DodgerBlue;
+            margin-bottom: 10px;
+            height: 50px;
+            font-size: 30px;
+            margin-left: 200px;
+            color: white;
+        }
+
+            .btnEdit:hover {
+                background-color: #368BC1;
+            }
+
+        #txtPassportNumber1, #txtPassportNumber2, #txtPassportNumber3 {
+            font-size: 30px;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .rounded-circle {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 10%;
+            margin-top: 5px;
+        }
+
+        .btn {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .logout {
+            height: 50px;
+            background-color: azure;
+            text-align: center;
+            font-size: 25px;
+            float: right;
+            border-radius: 5px;
+        }
+    </style>
+    <!--
+    <script type="text/javascript">
+        function EnableDisableTextBox(btnPassport) {
+            var txtPassportNumber1 = document.getElementById("txtPassportNumber1");
+            var txtPassportNumber2 = document.getElementById("txtPassportNumber2");
+            if (btnPassport.value == "Edit") {
+                txtPassportNumber1.removeAttribute("disabled");
+                txtPassportNumber2.removeAttribute("disabled");
+            }
+            else {
+                txtPassportNumber1.setAttribute("disabled", "disabled");
+                txtPassportNumber2.setAttribute("disabled", "disabled");
+            }
+        }
+    </script>
+    -->
+</head>
+
+<div class="container">
+
+    <div class="main">
+
+        <div class="col-md-12 mt-1">
+
+            <div class="card mb-3 content">
+                <img src="/images/user.png" class="rounded-circle" width="150" height:"50">
+
+                <h2 class="m-3 pt3 text-center">Profile</h2>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+
+                            <h3 class="m-3 pt3"><label for="name">Full Name</label></h3>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="txtPassportNumber1" value=" @Session["Name"].ToString()" disabled="disabled" />
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h3 class="m-3 pt3"><label for="name">Role</label></h3>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="txtPassportNumber3" value=" @Session["UserRole"].ToString()" disabled="disabled" />
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h3 class="m-3 pt3"><label for="name">Email</label></h3>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="txtPassportNumber2" value=" @Session["Email"].ToString()" disabled="disabled" />
+                        </div>
+                    </div>
+                    <hr>
+                    <!--
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input class="btnEdit" type="button" value="Edit" onclick="EnableDisableTextBox(this)" />
+                            <input class="btnEdit" type="button" value="Save" onclick="EnableDisableTextBox(this)" />
+                        </div>
+                    </div>
+                    -->
+
+                </div>
+            </div>
+            <div class="card mb-3 content">
+                <h2 class="m-3 pt3">Parcel</h2>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="mt-2">
+                            <a href="/User/CreateParcel" class="btn btn-lg btn-primary" type="button"> Create Parcel</a>
+                            <a href="/User/OrderDetails" class="btn btn-lg btn-primary" type="button"> Order Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
